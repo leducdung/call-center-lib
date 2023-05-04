@@ -1,0 +1,33 @@
+{
+  "name": "bud-storage",
+  "version": "1.0.6",
+  "description": "",
+  "license": "MIT",
+  "main": "build/index.js",
+  "types":  "build/index.js",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.3",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build && node build/index.js",
+    "build": "rimraf ./build && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leducdung/call-center-lib.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/leducdung/call-center-lib/issues"
+  },
+  "homepage": "https://github.com/leducdung/call-center-lib#readme"
+}
