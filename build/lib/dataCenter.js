@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.robotInsertMany = void 0;
+exports.robotUpdateByPhone = exports.robotInsertMany = void 0;
 const callToDataCenter_1 = require("../ThirdParty/callToDataCenter");
 function robotInsertMany(data) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -30,3 +30,22 @@ function robotInsertMany(data) {
     });
 }
 exports.robotInsertMany = robotInsertMany;
+function robotUpdateByPhone(data) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                let customerInfo = yield (0, callToDataCenter_1.CallToDataCenter)(data, '/ContactRecord/robot/updateByPhoneNumber');
+                if (customerInfo && customerInfo.data) {
+                    resolve(customerInfo.data);
+                }
+                else {
+                    reject('failed');
+                }
+            }
+            catch (e) {
+                reject('failed');
+            }
+        }));
+    });
+}
+exports.robotUpdateByPhone = robotUpdateByPhone;

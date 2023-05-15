@@ -14,8 +14,8 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 function CallToDataCenter(query, url) {
     return __awaiter(this, void 0, void 0, function* () {
-        const DATA_CALL_CENTER_SYSTEM_HOST_NAME = process.env.DATA_CALL_CENTER_SYSTEM_HOST_NAME;
-        const DATA_CALL_CENTER_SYSTEM_API_KEY = process.env.DATA_CALL_CENTER_SYSTEM_API_KEY;
+        const DATA_CALL_CENTER_SYSTEM_HOST_NAME = process.env.DATA_CALL_CENTER_SYSTEM_HOST_NAME || 'https://hobe-datacenter.makefamousapp.com';
+        const DATA_CALL_CENTER_SYSTEM_API_KEY = process.env.DATA_CALL_CENTER_SYSTEM_API_KEY || 'e2d07e80-a1f8-11ed-a8fc-0242ac120002';
         const api = DATA_CALL_CENTER_SYSTEM_HOST_NAME;
         const { body } = yield chai
             .request(`${api}`)

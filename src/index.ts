@@ -1,5 +1,6 @@
-import { robotInsertMany } from './lib/dataCenter';
+import { robotInsertMany, robotUpdateByPhone } from './lib/dataCenter';
 
 export {
-  robotInsertMany
+  robotInsertMany,
+  robotUpdateByPhone,
 }
