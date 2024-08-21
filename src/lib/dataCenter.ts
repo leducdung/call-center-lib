@@ -37,10 +37,16 @@ interface IRobotInsertData {
   TenTaiKhoan?: string // tên chủ tài khoản ngân hàng
   TenNganHang?: string // tên ngân hàng
   deviceType?: number
+  DeviceType?: string
+  DeviceName?: string
+  DeviceBrand?: string
+  DeviceModel?: string
+  DeviceCode?: string
 }
 
 interface IRobotInsertMany {
   contactRecordsData: IRobotInsertData[]
+  sliceNumber?: number
   config: IConfigDataCenter
 }
 
@@ -59,7 +65,10 @@ async function robotInsertMany(data: IRobotInsertMany) {
   return new Promise(async (resolve, reject) => {
     try {
       let customerInfo = await CallToDataCenter(
-        data,
+        {
+          contactRecordsData: data.contactRecordsData,
+          sliceNumber: data?.sliceNumber || 1,
+        },
         '/ContactRecord/robot/insertMany',
         data.config.apiKey,
         data.config.host,
@@ -79,7 +88,10 @@ async function robotUpdateByPhone(data: IRobotUpdateByPhone) {
   return new Promise(async (resolve, reject) => {
     try {
       let customerInfo = await CallToDataCenter(
-        data,
+        {
+          ContactPhone: data.ContactPhone,
+          contactRecordData: data.contactRecordData,
+        },
         '/ContactRecord/robot/updateByPhoneNumber',
         data.config.apiKey,
         data.config.host,

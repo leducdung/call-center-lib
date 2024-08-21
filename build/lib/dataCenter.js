@@ -15,7 +15,10 @@ function robotInsertMany(data) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             try {
-                let customerInfo = yield (0, callToDataCenter_1.CallToDataCenter)(data, '/ContactRecord/robot/insertMany');
+                let customerInfo = yield (0, callToDataCenter_1.CallToDataCenter)({
+                    contactRecordsData: data.contactRecordsData,
+                    sliceNumber: (data === null || data === void 0 ? void 0 : data.sliceNumber) || 1,
+                }, '/ContactRecord/robot/insertMany', data.config.apiKey, data.config.host);
                 if (customerInfo && customerInfo.data) {
                     resolve(customerInfo.data);
                 }
@@ -34,7 +37,10 @@ function robotUpdateByPhone(data) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             try {
-                let customerInfo = yield (0, callToDataCenter_1.CallToDataCenter)(data, '/ContactRecord/robot/updateByPhoneNumber');
+                let customerInfo = yield (0, callToDataCenter_1.CallToDataCenter)({
+                    ContactPhone: data.ContactPhone,
+                    contactRecordData: data.contactRecordData,
+                }, '/ContactRecord/robot/updateByPhoneNumber', data.config.apiKey, data.config.host);
                 if (customerInfo && customerInfo.data) {
                     resolve(customerInfo.data);
                 }
